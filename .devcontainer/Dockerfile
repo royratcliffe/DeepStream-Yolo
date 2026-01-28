@@ -33,4 +33,5 @@ ENV DEEPSTREAM_SDK_TBZ2=deepstream_sdk_v7.1.0_jetson
 COPY "$DEEPSTREAM_SDK_TBZ2".tbz2 /tmp
 RUN tar -C / -xjf /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2 && \
     /opt/nvidia/deepstream/deepstream/install.sh && \
-    rm /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2
+    rm /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2 && \
+    ldconfig
