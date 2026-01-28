@@ -12,14 +12,6 @@
 	],
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		// Install Python.
-		"ghcr.io/devcontainers/features/python:1": {
-			"installTools": true,
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-extra/features/apt-packages:1": {
-			"ppas": "ppa:deadsnakes/ppa"
-		}
 	}
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

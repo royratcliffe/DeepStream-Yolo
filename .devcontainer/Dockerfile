@@ -16,3 +16,6 @@ RUN apt-get update && apt-get install -y \
     libgstrtspserver-1.0-0 \
     libjansson4 \
     libyaml-cpp-dev
+
+# The image does not include build tools by default, nor Git.
+RUN apt-get install -y build-essential cmake git pkg-config
