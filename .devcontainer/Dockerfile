@@ -35,3 +35,9 @@ RUN tar -C / -xjf /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2 && \
     /opt/nvidia/deepstream/deepstream/install.sh && \
     rm /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2 && \
     ldconfig
+
+# Install TensorRT 10 library for DeepStream 7.1 compatibility.
+RUN apt-get install -y libnvinfer10
+
+# Clean up.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
