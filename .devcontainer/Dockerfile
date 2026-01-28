@@ -19,3 +19,18 @@ RUN apt-get update && apt-get install -y \
 
 # The image does not include build tools by default, nor Git.
 RUN apt-get install -y build-essential cmake git pkg-config
+
+# --enable-ssl
+RUN git clone https://github.com/confluentinc/librdkafka.git -- /tmp/librdkafka && \
+    cd /tmp/librdkafka && \
+    git checkout tags/v2.2.0 && \
+    ./configure && \
+    make && \
+    make install && \
+    rm -rf /tmp/librdkafka
+
+ENV DEEPSTREAM_SDK_TBZ2=deepstream_sdk_v7.1.0_jetson
+COPY "$DEEPSTREAM_SDK_TBZ2".tbz2 /tmp
+RUN tar -C / -xjf /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2 && \
+    /opt/nvidia/deepstream/deepstream/install.sh && \
+    rm /tmp/"$DEEPSTREAM_SDK_TBZ2".tbz2
